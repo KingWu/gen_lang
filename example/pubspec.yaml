@@ -1,0 +1,22 @@
+name: gen_lang_example
+description: Demonstrates how to use the gen_lang plugin.
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  gen_lang:
+    path: ../
+flutter:
+  uses-material-design: true

@@ -1,0 +1,16 @@
+{
+  "locale": "zh_TW",
+  "messageOnly":"這是一條消息",
+  "messageHasParam": "帶參數的消息 -  ${parameter}",
+  "pluralMsgOne": "${howMany} 消息",
+  "pluralMsgTwo": "${howMany} 消息",
+  "pluralMsgFew": "${howMany} 消息",
+  "pluralMsgPOther": "${howMany} 消息",
+  "pluralMsgZero": "沒有消息",
+  "pluralMsgMany": "很多消息",
+  "pluralMsgWithParamOne": "你好, ${yourName}! 收到一個消息",
+  "pluralMsgWithParamPOther": "你好, ${yourName}! 收到 ${howMany} 消息",
+  "genderWithParamMale": "你好, ${yourName}! 你是男",
+  "genderWithParamFemale": "你好, ${yourName}! 你是女",
+  "genderWithParamGOther": "你好, ${yourName}! 你是男或女"
+}

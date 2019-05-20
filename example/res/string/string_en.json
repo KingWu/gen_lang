@@ -1,0 +1,16 @@
+{
+  "locale": "en",
+  "messageOnly":"This is a message",
+  "messageHasParam": "Message with parameter - ${parameter}",
+  "pluralMsgOne": "${howMany} message",
+  "pluralMsgTwo": "${howMany} messages",
+  "pluralMsgPOther": "${howMany} messages",
+  "pluralMsgFew": "${howMany} few messages",
+  "pluralMsgZero": "No message",
+  "pluralMsgMany": "Many message",
+  "pluralMsgWithParamOne": "Hi, ${yourName}! Get one message",
+  "pluralMsgWithParamPOther": "Hi, ${yourName}! Get ${howMany} message",
+  "genderWithParamMale": "Hi, ${yourName}! You are Male",
+  "genderWithParamFemale": "Hi, ${yourName}! You are Female",
+  "genderWithParamGOther": "Hi, ${yourName}! You maybe Male or Female"
+}

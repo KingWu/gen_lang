@@ -1,0 +1,16 @@
+{
+  "locale": "ja",
+  "messageOnly":"これはメッセージです",
+  "messageHasParam": "パラメータ付きメッセージ -  ${parameter}",
+  "pluralMsgOne": "${howMany} メッセージ",
+  "pluralMsgTwo": "${howMany} メッセージ",
+  "pluralMsgPOther": "${howMany} メッセージ",
+  "pluralMsgFew": "${howMany} メッセージ",
+  "pluralMsgZero": "メッセージなし",
+  "pluralMsgMany": "多くのメッセージ",
+  "pluralMsgWithParamOne": "こんにちは, ${yourName}! メッセージを受け取りました",
+  "pluralMsgWithParamPOther": "こんにちは, ${yourName}! ${howMany} メッセージを受信しました",
+  "genderWithParamMale": "こんにちは, ${yourName}! あなたは男です",
+  "genderWithParamFemale": "こんにちは, ${yourName}! あなたは女性です",
+  "genderWithParamGOther": "こんにちは, ${yourName}! あなたは男性か女性です"
+}
