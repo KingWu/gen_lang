@@ -1,8 +1,10 @@
 name: gen_lang
-description:
+description: >-
+  gen_lang is a dart library for internationalization. Extracts messages
+  to generate dart files required by [Intl](https://github.com/dart-lang/intl).
 version: 0.1.0
-author: King Wu (@kw101)
-homepage:
+author: King Wu (@kw101) <king.wuff101@gmail.com>
+homepage: https://github.com/KingWu/gen_lang
 
 environment:
   sdk: ">=2.0.0 <3.0.0"
@@ -10,4 +12,4 @@ environment:
 dependencies:
   args: '>=0.12.1 <2.0.0'
   path: '>=0.9.0 <2.0.0'
-  ansicolor: 1.0.2
+  ansicolor: ^1.0.2
