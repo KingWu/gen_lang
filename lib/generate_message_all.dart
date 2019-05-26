@@ -1,6 +1,7 @@
 import 'package:gen_lang/extra_json_message_tool.dart';
 
-String generateMessageAllDart(String createdMessageLookup, String deferredLibraries, String findExacts){
+String generateMessageAllDart(
+    String createdMessageLookup, String deferredLibraries, String findExacts) {
   return '''
 // DO NOT EDIT. This is code generated via package:gen_lang/generate.dart
 
@@ -61,7 +62,7 @@ MessageLookupByLibrary _findGeneratedMessagesFor(locale) {
 ''';
 }
 
-String generateMessageLookup(String locale, {String message = ''}){
+String generateMessageLookup(String locale, {String message = ''}) {
   return '''
 final _\$$locale = \$$locale();
 
@@ -75,20 +76,20 @@ $message
 ''';
 }
 
-String generateKeyWithValue(String key, String value){
+String generateKeyWithValue(String key, String value) {
   return '''\t\t"$key" : $value,''';
 }
 
-String generateSimpleMessage(String message){
+String generateSimpleMessage(String message) {
   return '''MessageLookupByLibrary.simpleMessage("${normalizedJsonMessage(message)}")''';
 }
 
-String generateMessageFunction(String args, String message){
+String generateMessageFunction(String args, String message) {
   return '''($args) => "${normalizedJsonMessage(message)}"''';
 }
 
-String generatePluralFunction(String args, String zero, String one, String two, String few, String many, String other){
-
+String generatePluralFunction(String args, String zero, String one, String two,
+    String few, String many, String other) {
   var zeroArg = generateArg(normalizedJsonMessage(zero));
   var oneArg = generateArg(normalizedJsonMessage(one));
   var twoArg = generateArg(normalizedJsonMessage(two));
@@ -99,8 +100,8 @@ String generatePluralFunction(String args, String zero, String one, String two, 
   return '''($args) => "\${Intl.pluralLogic(howMany, zero: $zeroArg, one: $oneArg, two:$twoArg, few:$fewArg, many:$manyArg, other: $otherArg)}"''';
 }
 
-String generateGenderFunction(String args, String male, String female, String other){
-
+String generateGenderFunction(
+    String args, String male, String female, String other) {
   var maleArg = generateArg(normalizedJsonMessage(male));
   var femaleArg = generateArg(normalizedJsonMessage(female));
   var otherArg = generateArg(normalizedJsonMessage(other));
@@ -108,30 +109,28 @@ String generateGenderFunction(String args, String male, String female, String ot
   return '''($args) => "\${Intl.genderLogic(targetGender, male: $maleArg, female: $femaleArg, other: $otherArg)}"''';
 }
 
-String generateDeferredLibrariesLibrary(String locale){
+String generateDeferredLibrariesLibrary(String locale) {
   return '''\t"$locale": () => Future.value(null),''';
 }
 
-String generateFindExact(String locale){
+String generateFindExact(String locale) {
   return '''
     case "$locale":
         return _\$$locale;''';
 }
 
-bool hasArgsInMessage(String message){
+bool hasArgsInMessage(String message) {
   return ARG_REG_EXP.hasMatch(message);
 }
 
-bool hasArgsInPlural(String zero, String one, String two, String few, String many, String other){
+bool hasArgsInPlural(String zero, String one, String two, String few,
+    String many, String other) {
   List<String> plurals = [zero, one, two, few, many, other];
 
-  for(String plural in plurals){
-    if(null != plural && ARG_REG_EXP.hasMatch(plural)){
+  for (String plural in plurals) {
+    if (null != plural && ARG_REG_EXP.hasMatch(plural)) {
       return true;
     }
   }
   return false;
 }
-
-
-

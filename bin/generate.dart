@@ -1,34 +1,31 @@
 import 'package:args/args.dart';
 import 'package:gen_lang/core_18n.dart';
 
-main(List<String> args) async{
-
-  if(_isHelpCommand(args)){
+main(List<String> args) async {
+  if (_isHelpCommand(args)) {
     _printHelperDisplay();
-  }
-  else{
+  } else {
     handleGenerateI18nFiles(_generateI18Option(args));
   }
 }
 
-bool _isHelpCommand(List<String> args){
+bool _isHelpCommand(List<String> args) {
   return args.length == 1 && (args[0] == '--help' || args[0] == '-h');
 }
 
-void _printHelperDisplay(){
+void _printHelperDisplay() {
   var parser = _generateArgParser(null);
   print(parser.usage);
 }
 
-I18nOption _generateI18Option(List<String> args){
+I18nOption _generateI18Option(List<String> args) {
   I18nOption i18nOption = I18nOption();
   var parser = _generateArgParser(i18nOption);
   parser.parse(args);
   return i18nOption;
 }
 
-
-ArgParser _generateArgParser(I18nOption i18nOption){
+ArgParser _generateArgParser(I18nOption i18nOption) {
   var parser = new ArgParser();
 
   parser.addOption('source-dir',
@@ -44,11 +41,8 @@ ArgParser _generateArgParser(I18nOption i18nOption){
   parser.addOption('template-locale',
       defaultsTo: 'en',
       callback: (String x) => i18nOption.templateLocale = x,
-      help: 'Use string_{template-locale}.json as a template for default value when a locale does not exist. If string_en does not exist, this script will use the first string json file as a template');
+      help:
+          'Use string_{template-locale}.json as a template for default value when a locale does not exist. If string_en does not exist, this script will use the first string json file as a template');
 
   return parser;
 }
-
-
-
-
