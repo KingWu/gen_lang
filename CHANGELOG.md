@@ -1,3 +1,8 @@
+## 0.1.1
+Fix
+----
+* Update ReadMe
+
 ## 0.1.0
 
 Feature

@@ -26,49 +26,37 @@ class S {
     });
   }
   
+  String genderMessage(targetGender, name) {
+    return Intl.gender(targetGender,
+        male: 'Hi ${name}, He is boy.',
+        female: 'Hi ${name}, She is girl.',
+        other: 'Hi ${name}, he/she is boy/girl.',
+        name: 'genderMessage',
+        args: [targetGender, name]);
+  }
+
   String get locale {
-    return Intl.message('en', name: 'locale');
+    return Intl.message('English', name: 'locale');
   }
 
-  String get messageOnly {
-    return Intl.message('This is a message', name: 'messageOnly');
+  String messageWithParams(yourName) {
+    return Intl.message('Hi ${yourName}, Welcome you!', name: 'messageWithParams', args: [yourName]);
   }
 
-  String messageHasParam(parameter) {
-    return Intl.message('Message with parameter - ${parameter}', name: 'messageHasParam', args: [parameter]);
-  }
-
-  String pluralMsg(howMany) {
-    return Intl.plural(howMany,
-        zero: 'No message',
-        one: '${howMany} message',
-        two: '${howMany} messages',
-        few: '${howMany} few messages',
-        many: 'Many message',
-        other: '${howMany} messages',
-        name: 'pluralMsg',
-        args: [howMany]);
-  }
-
-  String pluralMsgWithParam(howMany, yourName) {
+  String pluralMessage(howMany, interviewerName) {
     return Intl.plural(howMany,
         zero: null,
-        one: 'Hi, ${yourName}! Get one message',
+        one: 'Hi ${interviewerName}, I have one year working experience.',
         two: null,
         few: null,
         many: null,
-        other: 'Hi, ${yourName}! Get ${howMany} message',
-        name: 'pluralMsgWithParam',
-        args: [howMany, yourName]);
+        other: 'Hi ${interviewerName}, I have ${howMany} years of working experience.',
+        name: 'pluralMessage',
+        args: [howMany, interviewerName]);
   }
 
-  String genderWithParam(targetGender, yourName) {
-    return Intl.gender(targetGender,
-        male: 'Hi, ${yourName}! You are Male',
-        female: 'Hi, ${yourName}! You are Female',
-        other: 'Hi, ${yourName}! You maybe Male or Female',
-        name: 'genderWithParam',
-        args: [targetGender, yourName]);
+  String get simpleMessage {
+    return Intl.message('This is a simple Message', name: 'simpleMessage');
   }
 
 

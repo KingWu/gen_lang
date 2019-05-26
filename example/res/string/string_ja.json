@@ -1,16 +1,10 @@
 {
-  "locale": "ja",
-  "messageOnly":"これはメッセージです",
-  "messageHasParam": "パラメータ付きメッセージ -  ${parameter}",
-  "pluralMsgOne": "${howMany} メッセージ",
-  "pluralMsgTwo": "${howMany} メッセージ",
-  "pluralMsgPOther": "${howMany} メッセージ",
-  "pluralMsgFew": "${howMany} メッセージ",
-  "pluralMsgZero": "メッセージなし",
-  "pluralMsgMany": "多くのメッセージ",
-  "pluralMsgWithParamOne": "こんにちは, ${yourName}! メッセージを受け取りました",
-  "pluralMsgWithParamPOther": "こんにちは, ${yourName}! ${howMany} メッセージを受信しました",
-  "genderWithParamMale": "こんにちは, ${yourName}! あなたは男です",
-  "genderWithParamFemale": "こんにちは, ${yourName}! あなたは女性です",
-  "genderWithParamGOther": "こんにちは, ${yourName}! あなたは男性か女性です"
+	"genderMessageFemale":"こんにちは${name}、彼女は女性です。",
+	"genderMessageGOther":"こんにちは${name}、彼/彼女は男性/女性です。",
+	"genderMessageMale":"こんにちは${name}、彼は男です。",
+	"locale":"日文",
+	"messageWithParams":"こんにちは${yourName}、ようこそ。",
+	"pluralMessageOne":"こんにちは${interviewerName}、仕事の経験がありません。",
+	"pluralMessagePOther":"こんにちは${interviewerName}、私は${howMany}年の実務経験があります。",
+	"simpleMessage":"これは簡単なメッセージです"
 }

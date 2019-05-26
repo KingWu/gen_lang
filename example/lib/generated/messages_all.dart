@@ -13,12 +13,11 @@ class $ja extends MessageLookupByLibrary {
   get localeName => 'ja';
   
   final messages = {
-		"locale" : MessageLookupByLibrary.simpleMessage("ja"),
-		"messageOnly" : MessageLookupByLibrary.simpleMessage("これはメッセージです"),
-		"messageHasParam" : (parameter) => "パラメータ付きメッセージ -  ${parameter}",
-		"pluralMsg" : (howMany) => "${Intl.pluralLogic(howMany, zero: 'メッセージなし', one: '${howMany} メッセージ', two:'${howMany} メッセージ', few:'${howMany} メッセージ', many:'多くのメッセージ', other: '${howMany} メッセージ')}",
-		"pluralMsgWithParam" : (howMany, yourName) => "${Intl.pluralLogic(howMany, zero: null, one: 'こんにちは, ${yourName}! メッセージを受け取りました', two:null, few:null, many:null, other: 'こんにちは, ${yourName}! ${howMany} メッセージを受信しました')}",
-		"genderWithParam" : (targetGender, yourName) => "${Intl.genderLogic(targetGender, male: 'こんにちは, ${yourName}! あなたは男です', female: 'こんにちは, ${yourName}! あなたは女性です', other: 'こんにちは, ${yourName}! あなたは男性か女性です')}",
+		"genderMessage" : (targetGender, name) => "${Intl.genderLogic(targetGender, male: 'こんにちは${name}、彼は男です。', female: 'こんにちは${name}、彼女は女性です。', other: 'こんにちは${name}、彼/彼女は男性/女性です。')}",
+		"locale" : MessageLookupByLibrary.simpleMessage("日文"),
+		"messageWithParams" : (yourName) => "こんにちは${yourName}、ようこそ。",
+		"pluralMessage" : (howMany, interviewerName) => "${Intl.pluralLogic(howMany, zero: null, one: 'こんにちは${interviewerName}、仕事の経験がありません。', two:null, few:null, many:null, other: 'こんにちは${interviewerName}、私は${howMany}年の実務経験があります。')}",
+		"simpleMessage" : MessageLookupByLibrary.simpleMessage("これは簡単なメッセージです"),
 
   };
 }
@@ -29,12 +28,11 @@ class $zh_TW extends MessageLookupByLibrary {
   get localeName => 'zh_TW';
   
   final messages = {
-		"locale" : MessageLookupByLibrary.simpleMessage("zh_TW"),
-		"messageOnly" : MessageLookupByLibrary.simpleMessage("這是一條消息"),
-		"messageHasParam" : (parameter) => "帶參數的消息 -  ${parameter}",
-		"pluralMsg" : (howMany) => "${Intl.pluralLogic(howMany, zero: '沒有消息', one: '${howMany} 消息', two:'${howMany} 消息', few:'${howMany} 消息', many:'很多消息', other: '${howMany} 消息')}",
-		"pluralMsgWithParam" : (howMany, yourName) => "${Intl.pluralLogic(howMany, zero: null, one: '你好, ${yourName}! 收到一個消息', two:null, few:null, many:null, other: '你好, ${yourName}! 收到 ${howMany} 消息')}",
-		"genderWithParam" : (targetGender, yourName) => "${Intl.genderLogic(targetGender, male: '你好, ${yourName}! 你是男', female: '你好, ${yourName}! 你是女', other: '你好, ${yourName}! 你是男或女')}",
+		"genderMessage" : (targetGender, name) => "${Intl.genderLogic(targetGender, male: '你好 ${name}，他是男。', female: '你好 ${name}，她是女。', other: '你好 ${name}，他/她是男/女。')}",
+		"locale" : MessageLookupByLibrary.simpleMessage("中文"),
+		"messageWithParams" : (yourName) => "你好 ${yourName}，歡迎你。",
+		"pluralMessage" : (howMany, interviewerName) => "${Intl.pluralLogic(howMany, zero: null, one: '你好 ${interviewerName}，我沒有工作經驗。', two:null, few:null, many:null, other: '你好 ${interviewerName}，我有${howMany}年工作經驗。')}",
+		"simpleMessage" : MessageLookupByLibrary.simpleMessage("這是簡單消息"),
 
   };
 }
@@ -45,12 +43,11 @@ class $en extends MessageLookupByLibrary {
   get localeName => 'en';
   
   final messages = {
-		"locale" : MessageLookupByLibrary.simpleMessage("en"),
-		"messageOnly" : MessageLookupByLibrary.simpleMessage("This is a message"),
-		"messageHasParam" : (parameter) => "Message with parameter - ${parameter}",
-		"pluralMsg" : (howMany) => "${Intl.pluralLogic(howMany, zero: 'No message', one: '${howMany} message', two:'${howMany} messages', few:'${howMany} few messages', many:'Many message', other: '${howMany} messages')}",
-		"pluralMsgWithParam" : (howMany, yourName) => "${Intl.pluralLogic(howMany, zero: null, one: 'Hi, ${yourName}! Get one message', two:null, few:null, many:null, other: 'Hi, ${yourName}! Get ${howMany} message')}",
-		"genderWithParam" : (targetGender, yourName) => "${Intl.genderLogic(targetGender, male: 'Hi, ${yourName}! You are Male', female: 'Hi, ${yourName}! You are Female', other: 'Hi, ${yourName}! You maybe Male or Female')}",
+		"genderMessage" : (targetGender, name) => "${Intl.genderLogic(targetGender, male: 'Hi ${name}, He is boy.', female: 'Hi ${name}, She is girl.', other: 'Hi ${name}, he/she is boy/girl.')}",
+		"locale" : MessageLookupByLibrary.simpleMessage("English"),
+		"messageWithParams" : (yourName) => "Hi ${yourName}, Welcome you!",
+		"pluralMessage" : (howMany, interviewerName) => "${Intl.pluralLogic(howMany, zero: null, one: 'Hi ${interviewerName}, I have one year working experience.', two:null, few:null, many:null, other: 'Hi ${interviewerName}, I have ${howMany} years of working experience.')}",
+		"simpleMessage" : MessageLookupByLibrary.simpleMessage("This is a simple Message"),
 
   };
 }

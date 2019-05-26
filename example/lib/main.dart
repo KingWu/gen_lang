@@ -38,14 +38,14 @@ class _MyAppState extends State<MyApp> {
             body: Center(
               child: Column(
                 children: <Widget>[
-                  Text(S.of(context).messageOnly),
-                  Text(S.of(context).messageHasParam('Yo')),
-                  Text(S.of(context).pluralMsg(5)),
-                  Text(S.of(context).pluralMsgWithParam(0, 'KingWu')),
-                  Text(S.of(context).pluralMsgWithParam(1, 'KingWu')),
-                  Text(S.of(context).pluralMsgWithParam(10, 'KingWu')),
-                  Text(S.of(context).genderWithParam('male', 'KingWu')),
-                  Text(S.of(context).genderWithParam('female', 'KingWu')),
+                  Text(S.of(context).locale),
+                  Text(S.of(context).simpleMessage),
+                  Text(S.of(context).messageWithParams('developer')),
+                  Text(S.of(context).pluralMessage(1, 'KingWu')),
+                  Text(S.of(context).pluralMessage(10, 'KingWu')),
+                  Text(S.of(context).genderMessage('male', 'KingWu')),
+                  Text(S.of(context).genderMessage('female', 'KingWu')),
+                  Text(S.of(context).genderMessage('other', 'KingWu'))
                 ],
               )
             ),

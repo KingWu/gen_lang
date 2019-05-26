@@ -6,10 +6,12 @@ to generate dart files required by
 
 Now, three steps for internationalization
 
-(1) Preparing Json files > (2) Run gen_lang > (3) Use it 
+1. Preparing Json files 
+2. Run gen_lang 
+3. Use it in coding
 
 ## Installation
-Add these libraries into pubspec.yaml
+Add these libraries into `pubspec.yaml`
 
 ``` 
 dependencies: 
@@ -21,7 +23,7 @@ dev_dependencies:
 ## Usage
 
 ```
-pub run gen_Lang:generate
+pub run gen_lang:generate
 ```
 
 A below table shown all supported arguments:
@@ -32,18 +34,29 @@ A below table shown all supported arguments:
 | --output-dir   | A output folder stores all generated files (defaults to "lib/generated") |
 | --template-locale    |  Use string_{template-locale}.json as a template to search KEY. If string_en does not exist, this script will use the first string json file as a template (defaults to "en")   |
 
-## Naming Convention for Json
-Json files must be named in this pattern `string_{Locale}`
+## Source of Json Files
+By default, the json files are required to locate at `res/string`. Using
+`--source-dir` argument can change the default source path. These files
+must be named in this pattern `string_{Locale}.json`
 
-Example: string_en.json, string_ja.json and string_zh_TW.json
+Example of the files,
 
-## Json Key & Message
+```
+|--- lib 
+|--- res 
+     |--- string 
+         |--- string_en.json 
+         |--- string_zh_TW.json 
+         |--- string_ja.json 
+```
+
+## Supported Message Type
 ### Simple message
 Define a json key and message without parameters 
 
 ``` 
 { 
-    "jsonKey": "Simple Message"
+    "simpleMessage": "This is a simple Message"
 }
 ```
 
@@ -53,27 +66,27 @@ Define a message with parameters. Use ${parameterName} in a message.
 
 ```
 {
-    "jsonKey": "Hi ${yourName}, Welcome to use gen_lang"
+    "messageWithParams": "Hi ${yourName}, Welcome you!"
 }
 ```
 
 ### Plural messages with parameters 
 Define messages in a plural form. ${how many} is a reserved parameter in
 a plural message. This parameters support integer only. For Intl,
-Intl.plural() supports these plural keyword including 'Zero', 'One',
+[Intl.plural()](https://api.flutter.dev/flutter/intl/Intl/plural.html) supports these plural keyword including 'Zero', 'One',
 'Two', 'Few', 'Many' and 'Other'. Define a json key into this pattern
 {jsonKey} {pluralKeyword}. For 'Other', need to define 'POther' for the
-pluarl keyword.
+plural keyword.
 
 Example
 ```
 { 
-    "jsonKeyZero": "Hi ${interviewerName}, I have no working experience.", 
-    "jsonKeyOne": "Hi ${interviewerName}, I have one year of working experience.", 
-    "jsonKeyTwo": "Hi ${interviewerName}, I have two years of working experience.", 
-    "jsonKeyFew": "Hi ${interviewerName}, I have few years of working experience.", 
-    "jsonKeyMany": "Hi ${interviewerName}, I worked for a long time.", 
-    "jsonKeyPOther": "Hi ${interviewerName}, I have ${howMany} years of working experience."
+    "pluralMessageZero": "Hi ${interviewerName}, I have no working experience.", 
+    "pluralMessageOne": "Hi ${interviewerName}, I have one year working experience.", 
+    "pluralMessageTwo": "Hi ${interviewerName}, I have two years of working experience.", 
+    "pluralMessageFew": "Hi ${interviewerName}, I have few years of working experience.", 
+    "pluralMessageMany": "Hi ${interviewerName}, I worked for a long time.", 
+    "pluralMessagePOther": "Hi ${interviewerName}, I have ${howMany} years of working experience."
 }
 ``` 
  
@@ -84,7 +97,7 @@ source code.
 ### Gender message with parameters
 Define a message in gender form. ${targetGender} is a reserved parameter
 in a gender message. This parameters support string value with 'male',
-female' and 'other'. For Intl, Intl.gender() supports these keyword
+female' and 'other'. For Intl, [Intl.gender()](https://api.flutter.dev/flutter/intl/Intl/gender.html) supports these keyword
 including 'Male', 'Female' and 'Other'. Define a json key into this
 pattern {jsonKey} {genderKeyword}. For 'Other', need to define 'GOther'
 for the gender keyword.
@@ -92,9 +105,9 @@ for the gender keyword.
 Example
 ```
 { 
-    "jsonKeyMale": "Hi ${name}, He is boy.", 
-    "jsonKeyFemale": "Hi ${name}, She is girl", 
-    "jsonKeyGOther": "Hi ${name}, he/she is boy/girl." 
+    "genderMessageMale": "Hi ${name}, He is boy.", 
+    "genderMessageFemale": "Hi ${name}, She is girl", 
+    "genderMessageGOther": "Hi ${name}, he/she is boy/girl." 
 }
 ```  
  
@@ -110,13 +123,30 @@ import 'package:gen_lang_example/generated/i18n.dart';
 
 ...
 
-S.of(context).jsonKey; // Simple Message 
-S.of(context).jsonKey(name); // Message with parameters
-S.of(context).jsonKey(10, 'King Wu'); // Plural Message with parameters
-S.of(context).jsonKey('male', 'King Wu'); // Gender Message with parameters
+MaterialApp(
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      
+      ...
+      ...
+
+        S.of(context).simpleMessage; // Simple Message 
+        S.of(context).messageWithParams('developer'); // Message with parameters
+        S.of(context).pluralMessage(10, 'King Wu'); // Plural Message with parameters
+        S.of(context).genderMessage('male', 'King Wu'); // Gender Message with parameters
 ```
 
 ### Running Script in Example
-Go into example folder. Run the command - pub run gen_Lang:generate
+
+Go into example folder. Run the command
+
+``` 
+cd example
+pub run gen_lang:generate
+```
 
 Then will generate `i18n.dart` and `messages_all.dart`
