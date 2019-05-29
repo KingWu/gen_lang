@@ -2,30 +2,30 @@ import 'package:args/args.dart';
 import 'package:gen_lang/core_18n.dart';
 
 main(List<String> args) async {
-  if (_isHelpCommand(args)) {
-    _printHelperDisplay();
+  if (isHelpCommand(args)) {
+    printHelperDisplay();
   } else {
-    handleGenerateI18nFiles(_generateI18Option(args));
+    handleGenerateI18nFiles(generateI18Option(args));
   }
 }
 
-bool _isHelpCommand(List<String> args) {
+bool isHelpCommand(List<String> args) {
   return args.length == 1 && (args[0] == '--help' || args[0] == '-h');
 }
 
-void _printHelperDisplay() {
-  var parser = _generateArgParser(null);
+void printHelperDisplay() {
+  var parser = generateArgParser(null);
   print(parser.usage);
 }
 
-I18nOption _generateI18Option(List<String> args) {
+I18nOption generateI18Option(List<String> args) {
   I18nOption i18nOption = I18nOption();
-  var parser = _generateArgParser(i18nOption);
+  var parser = generateArgParser(i18nOption);
   parser.parse(args);
   return i18nOption;
 }
 
-ArgParser _generateArgParser(I18nOption i18nOption) {
+ArgParser generateArgParser(I18nOption i18nOption) {
   var parser = new ArgParser();
 
   parser.addOption('source-dir',
