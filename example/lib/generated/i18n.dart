@@ -28,35 +28,39 @@ class S {
   
   String genderMessage(targetGender, name) {
     return Intl.gender(targetGender,
-        male: 'Hi ${name}, He is boy.',
-        female: 'Hi ${name}, She is girl.',
-        other: 'Hi ${name}, he/she is boy/girl.',
+        male: "Hi ${name}, He is boy.",
+        female: "Hi ${name}, She is girl.",
+        other: "Hi ${name}, he/she is boy/girl.",
         name: 'genderMessage',
         args: [targetGender, name]);
   }
 
   String get locale {
-    return Intl.message('English', name: 'locale');
+    return Intl.message("English", name: 'locale');
   }
 
   String messageWithParams(yourName) {
-    return Intl.message('Hi ${yourName}, Welcome you!', name: 'messageWithParams', args: [yourName]);
+    return Intl.message("Hi ${yourName}, Welcome you!", name: 'messageWithParams', args: [yourName]);
   }
 
   String pluralMessage(howMany, interviewerName) {
     return Intl.plural(howMany,
         zero: null,
-        one: 'Hi ${interviewerName}, I have one year working experience.',
+        one: "Hi ${interviewerName}, I have one year working experience.",
         two: null,
         few: null,
         many: null,
-        other: 'Hi ${interviewerName}, I have ${howMany} years of working experience.',
+        other: "Hi ${interviewerName}, I have ${howMany} years of working experience.",
         name: 'pluralMessage',
         args: [howMany, interviewerName]);
   }
 
   String get simpleMessage {
-    return Intl.message('This is a simple Message', name: 'simpleMessage');
+    return Intl.message("This is a simple Message", name: 'simpleMessage');
+  }
+
+  String get specialCharactersMessage {
+    return Intl.message("Special Characters Nice Developer's \"Message\"\n Next Line", name: 'specialCharactersMessage');
   }
 
 

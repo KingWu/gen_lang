@@ -6,5 +6,6 @@
 	"messageWithParams":"你好 ${yourName}，歡迎你。",
 	"pluralMessageOne":"你好 ${interviewerName}，我沒有工作經驗。",
 	"pluralMessagePOther":"你好 ${interviewerName}，我有${howMany}年工作經驗。",
-	"simpleMessage":"這是簡單消息"
+	"simpleMessage":"這是簡單消息",
+	"specialCharactersMessage":"Special Characters Nice Developer's \"Message\"\n Next Line"
 }

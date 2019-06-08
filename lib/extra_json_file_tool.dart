@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:gen_lang/extra_json_message_tool.dart';
 import 'package:gen_lang/print_tool.dart';
 import 'package:path/path.dart' as path;
 
@@ -105,7 +106,11 @@ FileSystemEntity getDefaultTemplateLang(
 }
 
 Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
-  Map<String, dynamic> jsonMap = jsonDecode(await jsonFile.readAsString());
+  String json = await jsonFile.readAsString();
+  String normalizedJson = normalizedSpecialCharacters(json);
+
+  Map<String, dynamic> jsonMap = jsonDecode(normalizedJson);
+
   Map<String, Message> keyMap = {};
 
   for (MapEntry<String, dynamic> jsonEntry in jsonMap.entries) {

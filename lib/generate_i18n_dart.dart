@@ -92,7 +92,7 @@ $supportedLocale
 String generateGetterSimpleMessageFunction(String jsonKey, String message) {
   return '''
   String get $jsonKey {
-    return Intl.message('${normalizedJsonMessage(message)}', name: '$jsonKey');
+    return Intl.message("${normalizedJsonMessage(message)}", name: '$jsonKey');
   }
 ''';
 }
@@ -101,7 +101,7 @@ String generateGetterMessageWithArgsFunction(
     String jsonKey, String message, String args) {
   return '''
   String $jsonKey($args) {
-    return Intl.message('${normalizedJsonMessage(message)}', name: '$jsonKey', args: [$args]);
+    return Intl.message("${normalizedJsonMessage(message)}", name: '$jsonKey', args: [$args]);
   }
 ''';
 }

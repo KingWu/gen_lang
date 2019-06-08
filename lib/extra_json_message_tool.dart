@@ -18,15 +18,23 @@ List<String> getArgs(Iterable<Match> allMatch, String defaultArg) {
   return args;
 }
 
+String normalizedSpecialCharacters(String message) {
+  if (null != message) {
+    String normalizedJson = message.replaceAll(r"\", r"\\");
+    return normalizedJson.replaceAll(r'\\"', r'\\\"');
+  }
+  return null;
+}
+
 String normalizedJsonMessage(String message) {
   if (null != message) {
-    return message.replaceAll("'", "''");
+    return message;
   }
   return null;
 }
 
 String generateArg(arg) {
-  return null != arg ? "'$arg'" : 'null';
+  return null != arg ? '"$arg"' : 'null';
 }
 
 String extraArgsFromGender(String male, String female, String other) {
