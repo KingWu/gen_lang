@@ -45,7 +45,8 @@ class _MyAppState extends State<MyApp> {
                   Text(S.of(context).pluralMessage(10, 'KingWu')),
                   Text(S.of(context).genderMessage('male', 'KingWu')),
                   Text(S.of(context).genderMessage('female', 'KingWu')),
-                  Text(S.of(context).genderMessage('other', 'KingWu'))
+                  Text(S.of(context).genderMessage('other', 'KingWu')),
+                  Text(S.of(context).specialCharactersMessage)
                 ],
               )
             ),

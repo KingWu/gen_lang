@@ -6,5 +6,6 @@
   "messageWithParams":"Hi ${yourName}, Welcome you!",
   "pluralMessageOne":"Hi ${interviewerName}, I have one year working experience.",
   "pluralMessagePOther":"Hi ${interviewerName}, I have ${howMany} years of working experience.",
-  "simpleMessage":"This is a simple Message"
+  "simpleMessage":"This is a simple Message",
+  "specialCharactersMessage":"Special Characters Nice Developer's \"Message\"\n Next Line"
 }
