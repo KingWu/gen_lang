@@ -122,3 +122,5 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   @override
   bool shouldReload(GeneratedLocalizationsDelegate old) => false;
 }
+
+// ignore_for_file: unnecessary_brace_in_string_interps
