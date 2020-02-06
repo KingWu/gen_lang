@@ -111,3 +111,5 @@ MessageLookupByLibrary _findGeneratedMessagesFor(locale) {
   if (actualLocale == null) return null;
   return _findExact(actualLocale);
 }
+
+// ignore_for_file: unnecessary_brace_in_string_interps
