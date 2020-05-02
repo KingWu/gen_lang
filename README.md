@@ -18,7 +18,7 @@ dependencies:
     flutter_localizations: 
         sdk: flutter 
 dev_dependencies:
-    gen_lang: 0.1.2
+    gen_lang: 0.1.3
 ```
 ## Usage
 

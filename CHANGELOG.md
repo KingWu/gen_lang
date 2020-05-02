@@ -1,3 +1,8 @@
+## 0.1.3
+Fix
+----
+* Remove warning interpolation braces not needed
+
 ## 0.1.2
 Fix
 ----
