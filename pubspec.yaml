@@ -12,3 +12,4 @@ dependencies:
   args: '>=0.12.1 <2.0.0'
   path: '>=0.9.0 <2.0.0'
   ansicolor: ^1.0.2
+  intl: ^0.16.1
