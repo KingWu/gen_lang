@@ -31,6 +31,7 @@ void handleGenerateI18nFiles(I18nOption option) async {
 
   List<FileSystemEntity> files =
       await dirContents(Directory(path.join(current.path, option.sourceDir)));
+  files.sort((a, b) => a.path.compareTo(b.path));
   Map<String, FileSystemEntity> validFilesMap = getValidStringFileMap(files);
   FileSystemEntity defaultTemplateLang =
       getDefaultTemplateLang(validFilesMap, option.templateLocale);
