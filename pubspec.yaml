@@ -9,6 +9,6 @@ environment:
   sdk: ">=2.0.0 <3.0.0"
 
 dependencies:
-  args: '>=0.12.1 <2.0.0'
+  args: '2.0.0'
   path: '>=0.9.0 <2.0.0'
   ansicolor: ^1.0.2
