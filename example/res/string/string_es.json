@@ -1,0 +1,11 @@
+{
+  "genderMessageFemale":"Hola ${name}, ella es una chica.",
+  "genderMessageGOther":"Hola ${name}, el/ella es chico/chica.",
+  "genderMessageMale":"Hola ${name}, él es u chico.",
+  "locale":"Spanish",
+  "messageWithParams":"Hola ${yourName}, bienvenido!",
+  "pluralMessageOne":"Hola ${interviewerName}, tengo un año de experiencia laboral.",
+  "pluralMessagePOther":"Hola ${interviewerName}, Tengo ${howMany} años de experiencia laboral.",
+  "simpleMessage":"Este es un mensaje sencillo",
+  "specialCharactersMessage":"Caracteres Especiales Buenos Desarrolladores \"Mensaje\"\n Siguiente Línea"
+}
