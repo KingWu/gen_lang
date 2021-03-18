@@ -15,7 +15,7 @@ class S {
  
   static const GeneratedLocalizationsDelegate delegate = GeneratedLocalizationsDelegate();
 
-  static S of(BuildContext context) {
+  static S? of(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
   
@@ -42,8 +42,8 @@ $supportedLocale
     ];
   }
 
-  LocaleListResolutionCallback listResolution({Locale fallback}) {
-    return (List<Locale> locales, Iterable<Locale> supported) {
+  LocaleListResolutionCallback listResolution({Locale? fallback}) {
+    return (List<Locale>? locales, Iterable<Locale> supported) {
       if (locales == null || locales.isEmpty) {
         return fallback ?? supported.first;
       } else {
@@ -52,13 +52,13 @@ $supportedLocale
     };
   }
 
-  LocaleResolutionCallback resolution({Locale fallback}) {
-    return (Locale locale, Iterable<Locale> supported) {
+  LocaleResolutionCallback resolution({Locale? fallback}) {
+    return (Locale? locale, Iterable<Locale> supported) {
       return _resolve(locale, fallback, supported);
     };
   }
 
-  Locale _resolve(Locale locale, Locale fallback, Iterable<Locale> supported) {
+  Locale _resolve(Locale? locale, Locale? fallback, Iterable<Locale> supported) {
     if (locale == null || !isSupported(locale)) {
       return fallback ?? supported.first;
     }
@@ -80,7 +80,7 @@ $supportedLocale
   }
 
   @override
-  bool isSupported(Locale locale) =>
+  bool isSupported(Locale? locale) =>
     locale != null && supportedLocales.contains(locale);
 
   @override
@@ -91,7 +91,7 @@ $supportedLocale
 ''';
 }
 
-String generateGetterSimpleMessageFunction(String jsonKey, String message) {
+String generateGetterSimpleMessageFunction(String jsonKey, String? message) {
   return '''
   String get $jsonKey {
     return Intl.message("${normalizedJsonMessage(message)}", name: '$jsonKey');
@@ -100,7 +100,7 @@ String generateGetterSimpleMessageFunction(String jsonKey, String message) {
 }
 
 String generateGetterMessageWithArgsFunction(
-    String jsonKey, String message, String args) {
+    String jsonKey, String? message, String args) {
   return '''
   String $jsonKey($args) {
     return Intl.message("${normalizedJsonMessage(message)}", name: '$jsonKey', args: [$args]);
@@ -108,8 +108,8 @@ String generateGetterMessageWithArgsFunction(
 ''';
 }
 
-String generateGetterPluralFunction(String jsonKey, String args, String zero,
-    String one, String two, String few, String many, String other) {
+String generateGetterPluralFunction(String jsonKey, String args, String? zero,
+    String? one, String? two, String? few, String? many, String? other) {
   var zeroArg = generateArg(normalizedJsonMessage(zero));
   var oneArg = generateArg(normalizedJsonMessage(one));
   var twoArg = generateArg(normalizedJsonMessage(two));
@@ -133,7 +133,7 @@ String generateGetterPluralFunction(String jsonKey, String args, String zero,
 }
 
 String generateGetterGenderFunction(
-    String jsonKey, String args, String male, String female, String other) {
+    String jsonKey, String args, String? male, String? female, String? other) {
   var maleArg = generateArg(normalizedJsonMessage(male));
   var femaleArg = generateArg(normalizedJsonMessage(female));
   var otherArg = generateArg(normalizedJsonMessage(other));

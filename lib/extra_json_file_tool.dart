@@ -6,23 +6,23 @@ import 'package:gen_lang/print_tool.dart';
 import 'package:path/path.dart' as path;
 
 class Message {
-  MessageKey messageKey;
+  late MessageKey messageKey;
 
   // Simple Message
-  String message;
+  String? message;
 
   // Plural
-  String zero;
-  String one;
-  String two;
-  String few;
-  String many;
-  String other;
+  String? zero;
+  String? one;
+  String? two;
+  String? few;
+  String? many;
+  String? other;
 
   // Gender
-  String male;
-  String female;
-  String genderOther;
+  String? male;
+  String? female;
+  String? genderOther;
 
   @override
   String toString() {
@@ -33,7 +33,7 @@ class Message {
 class MessageKey {
   String key;
   MessageType type;
-  SubType subType;
+  SubType? subType;
 
   MessageKey(this.key, this.type, this.subType);
 
@@ -91,9 +91,9 @@ Future<List<FileSystemEntity>> dirContents(Directory dir) {
   return completer.future;
 }
 
-FileSystemEntity getDefaultTemplateLang(
-    Map<String, FileSystemEntity> validFilesMap, String lang) {
-  FileSystemEntity defaultFile = validFilesMap[lang];
+FileSystemEntity? getDefaultTemplateLang(
+    Map<String, FileSystemEntity> validFilesMap, String? lang) {
+  FileSystemEntity? defaultFile = validFilesMap[lang!];
   if (defaultFile != null) {
     return defaultFile;
   }
@@ -107,7 +107,7 @@ FileSystemEntity getDefaultTemplateLang(
 
 Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
   String json = await jsonFile.readAsString();
-  String normalizedJson = normalizedSpecialCharacters(json);
+  String normalizedJson = normalizedSpecialCharacters(json)!;
 
   Map<String, dynamic> jsonMap = jsonDecode(normalizedJson);
 
@@ -118,7 +118,7 @@ Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
     String v = jsonEntry.value;
 
     MessageKey _messageKey = getMessageKey(k);
-    Message _message;
+    Message? _message;
     if (keyMap.containsKey(_messageKey.key)) {
       _message = keyMap[_messageKey.key];
     } else {
@@ -133,32 +133,32 @@ Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
           switch (_messageKey.subType) {
             case SubType.pluralOne:
               {
-                _message.one = v;
+                _message!.one = v;
                 break;
               }
             case SubType.pluralFew:
               {
-                _message.few = v;
+                _message!.few = v;
                 break;
               }
             case SubType.pluralMany:
               {
-                _message.many = v;
+                _message!.many = v;
                 break;
               }
             case SubType.pluralOther:
               {
-                _message.other = v;
+                _message!.other = v;
                 break;
               }
             case SubType.pluralZero:
               {
-                _message.zero = v;
+                _message!.zero = v;
                 break;
               }
             case SubType.pluralTwo:
               {
-                _message.two = v;
+                _message!.two = v;
                 break;
               }
             default:
@@ -173,17 +173,17 @@ Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
           switch (_messageKey.subType) {
             case SubType.genderMale:
               {
-                _message.male = v;
+                _message!.male = v;
                 break;
               }
             case SubType.genderFemale:
               {
-                _message.female = v;
+                _message!.female = v;
                 break;
               }
             case SubType.genderOther:
               {
-                _message.genderOther = v;
+                _message!.genderOther = v;
                 break;
               }
             default:
@@ -195,7 +195,7 @@ Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
         }
       default:
         {
-          _message.message = v;
+          _message!.message = v;
           break;
         }
     }
@@ -207,7 +207,7 @@ Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
 MessageKey getMessageKey(String jsonKey) {
   String key;
   MessageType type;
-  SubType subType;
+  SubType? subType;
 
   if (jsonKey.endsWith('One')) {
     key = jsonKey.substring(0, jsonKey.lastIndexOf('One'));
