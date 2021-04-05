@@ -23,22 +23,6 @@ class $ja extends MessageLookupByLibrary {
   };
 }
 
-final _$zh_TW = $zh_TW();
-
-class $zh_TW extends MessageLookupByLibrary {
-  get localeName => 'zh_TW';
-  
-  final messages = {
-		"genderMessage" : (targetGender, name) => "${Intl.genderLogic(targetGender, male: "你好 ${name}，他是男。", female: "你好 ${name}，她是女。", other: "你好 ${name}，他/她是男/女。")}",
-		"locale" : MessageLookupByLibrary.simpleMessage("中文"),
-		"messageWithParams" : (yourName) => "你好 ${yourName}，歡迎你。",
-		"pluralMessage" : (howMany, interviewerName) => "${Intl.pluralLogic(howMany, zero: null, one: "你好 ${interviewerName}，我沒有工作經驗。", two:null, few:null, many:null, other: "你好 ${interviewerName}，我有${howMany}年工作經驗。")}",
-		"simpleMessage" : MessageLookupByLibrary.simpleMessage("這是簡單消息"),
-		"specialCharactersMessage" : MessageLookupByLibrary.simpleMessage("Special Characters Nice Developer's \"Message\"\n Next Line"),
-
-  };
-}
-
 final _$en = $en();
 
 class $en extends MessageLookupByLibrary {
@@ -55,24 +39,59 @@ class $en extends MessageLookupByLibrary {
   };
 }
 
+final _$es = $es();
+
+class $es extends MessageLookupByLibrary {
+  get localeName => 'es';
+  
+  final messages = {
+		"genderMessage" : (targetGender, name) => "${Intl.genderLogic(targetGender, male: "Hola ${name}, él es u chico.", female: "Hola ${name}, ella es una chica.", other: "Hola ${name}, el/ella es chico/chica.")}",
+		"locale" : MessageLookupByLibrary.simpleMessage("Spanish"),
+		"messageWithParams" : (yourName) => "Hola ${yourName}, bienvenido!",
+		"pluralMessage" : (howMany, interviewerName) => "${Intl.pluralLogic(howMany, zero: null, one: "Hola ${interviewerName}, tengo un año de experiencia laboral.", two:null, few:null, many:null, other: "Hola ${interviewerName}, Tengo ${howMany} años de experiencia laboral.")}",
+		"simpleMessage" : MessageLookupByLibrary.simpleMessage("Este es un mensaje sencillo"),
+		"specialCharactersMessage" : MessageLookupByLibrary.simpleMessage("Caracteres Especiales Buenos Desarrolladores \"Mensaje\"\n Siguiente Línea"),
+
+  };
+}
+
+final _$zh_TW = $zh_TW();
+
+class $zh_TW extends MessageLookupByLibrary {
+  get localeName => 'zh_TW';
+  
+  final messages = {
+		"genderMessage" : (targetGender, name) => "${Intl.genderLogic(targetGender, male: "你好 ${name}，他是男。", female: "你好 ${name}，她是女。", other: "你好 ${name}，他/她是男/女。")}",
+		"locale" : MessageLookupByLibrary.simpleMessage("中文"),
+		"messageWithParams" : (yourName) => "你好 ${yourName}，歡迎你。",
+		"pluralMessage" : (howMany, interviewerName) => "${Intl.pluralLogic(howMany, zero: null, one: "你好 ${interviewerName}，我沒有工作經驗。", two:null, few:null, many:null, other: "你好 ${interviewerName}，我有${howMany}年工作經驗。")}",
+		"simpleMessage" : MessageLookupByLibrary.simpleMessage("這是簡單消息"),
+		"specialCharactersMessage" : MessageLookupByLibrary.simpleMessage("Special Characters Nice Developer's \"Message\"\n Next Line"),
+
+  };
+}
+
 
 
 typedef Future<dynamic> LibraryLoader();
 Map<String, LibraryLoader> _deferredLibraries = {
 	"ja": () => Future.value(null),
-	"zh_TW": () => Future.value(null),
 	"en": () => Future.value(null),
+	"es": () => Future.value(null),
+	"zh_TW": () => Future.value(null),
 
 };
 
-MessageLookupByLibrary _findExact(localeName) {
+MessageLookupByLibrary? _findExact(localeName) {
   switch (localeName) {
     case "ja":
         return _$ja;
-    case "zh_TW":
-        return _$zh_TW;
     case "en":
         return _$en;
+    case "es":
+        return _$es;
+    case "zh_TW":
+        return _$zh_TW;
 
     default:
       return null;
@@ -105,7 +124,7 @@ bool _messagesExistFor(String locale) {
   }
 }
 
-MessageLookupByLibrary _findGeneratedMessagesFor(locale) {
+MessageLookupByLibrary? _findGeneratedMessagesFor(locale) {
   var actualLocale = Intl.verifiedLocale(locale, _messagesExistFor,
       onFailure: (_) => null);
   if (actualLocale == null) return null;

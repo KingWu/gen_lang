@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gen_lang_example/generated/i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gen_lang_example/generated/i18n.dart';
 
 void main() => runApp(MyApp());
 

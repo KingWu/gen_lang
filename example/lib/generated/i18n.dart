@@ -12,7 +12,17 @@ class S {
   static const GeneratedLocalizationsDelegate delegate = GeneratedLocalizationsDelegate();
 
   static S of(BuildContext context) {
-    return Localizations.of<S>(context, S);
+    final localization = Localizations.of<S>(context, S);
+    
+    assert(() {
+      if (localization == null) {
+        throw FlutterError(
+            'S requested with a context that does not include S.');
+      }
+      return true;
+    }());
+    
+    return localization!;
   }
   
   static Future<S> load(Locale locale) {
@@ -73,13 +83,14 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
 			Locale("en", ""),
 			Locale("ja", ""),
+			Locale("es", ""),
 			Locale("zh", "TW"),
 
     ];
   }
 
-  LocaleListResolutionCallback listResolution({Locale fallback}) {
-    return (List<Locale> locales, Iterable<Locale> supported) {
+  LocaleListResolutionCallback listResolution({Locale? fallback}) {
+    return (List<Locale>? locales, Iterable<Locale> supported) {
       if (locales == null || locales.isEmpty) {
         return fallback ?? supported.first;
       } else {
@@ -88,13 +99,13 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
     };
   }
 
-  LocaleResolutionCallback resolution({Locale fallback}) {
-    return (Locale locale, Iterable<Locale> supported) {
+  LocaleResolutionCallback resolution({Locale? fallback}) {
+    return (Locale? locale, Iterable<Locale> supported) {
       return _resolve(locale, fallback, supported);
     };
   }
 
-  Locale _resolve(Locale locale, Locale fallback, Iterable<Locale> supported) {
+  Locale _resolve(Locale? locale, Locale? fallback, Iterable<Locale> supported) {
     if (locale == null || !isSupported(locale)) {
       return fallback ?? supported.first;
     }
@@ -116,7 +127,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   }
 
   @override
-  bool isSupported(Locale locale) =>
+  bool isSupported(Locale? locale) =>
     locale != null && supportedLocales.contains(locale);
 
   @override
