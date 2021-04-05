@@ -15,8 +15,18 @@ class S {
  
   static const GeneratedLocalizationsDelegate delegate = GeneratedLocalizationsDelegate();
 
-  static S? of(BuildContext context) {
-    return Localizations.of<S>(context, S);
+  static S of(BuildContext context) {
+    final localization = Localizations.of<S>(context, S);
+    
+    assert(() {
+      if (localization == null) {
+        throw FlutterError(
+            'S requested with a context that does not include S.');
+      }
+      return true;
+    }());
+    
+    return localization!;
   }
   
   static Future<S> load(Locale locale) {
