@@ -43,7 +43,7 @@ $supportedLocale
   }
 
   LocaleListResolutionCallback listResolution({Locale? fallback}) {
-    return (List<Locale> locales, Iterable<Locale> supported) {
+    return (List<Locale>? locales, Iterable<Locale> supported) {
       if (locales == null || locales.isEmpty) {
         return fallback ?? supported.first;
       } else {
@@ -52,7 +52,7 @@ $supportedLocale
     };
   }
 
-  LocaleResolutionCallback resolution({Locale fallback}) {
+  LocaleResolutionCallback resolution({Locale? fallback}) {
     return (Locale locale, Iterable<Locale> supported) {
       return _resolve(locale, fallback, supported);
     };
