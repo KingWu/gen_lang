@@ -10,9 +10,9 @@ import 'package:gen_lang/extra_json_file_tool.dart';
 import 'package:path/path.dart' as path;
 
 class I18nOption {
-  String sourceDir;
-  String templateLocale;
-  String outputDir;
+  late String sourceDir;
+  late String templateLocale;
+  late String outputDir;
 
   @override
   String toString() {
@@ -32,7 +32,7 @@ void handleGenerateI18nFiles(I18nOption option) async {
   List<FileSystemEntity> files =
       await dirContents(Directory(path.join(current.path, option.sourceDir)));
   Map<String, FileSystemEntity> validFilesMap = getValidStringFileMap(files);
-  FileSystemEntity defaultTemplateLang =
+  FileSystemEntity? defaultTemplateLang =
       getDefaultTemplateLang(validFilesMap, option.templateLocale);
   if (null != defaultTemplateLang) {
     Map<String, Message> defaultJsonKeyMessageMap =

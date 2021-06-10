@@ -6,23 +6,23 @@ import 'package:gen_lang/print_tool.dart';
 import 'package:path/path.dart' as path;
 
 class Message {
-  MessageKey messageKey;
+  late MessageKey messageKey;
 
   // Simple Message
-  String message;
+  late String message;
 
   // Plural
-  String zero;
-  String one;
-  String two;
-  String few;
-  String many;
-  String other;
+  late String zero;
+  late String one;
+  late String two;
+  late String few;
+  late String many;
+  late String other;
 
   // Gender
-  String male;
-  String female;
-  String genderOther;
+  late String male;
+  late String female;
+  late String genderOther;
 
   @override
   String toString() {
@@ -33,7 +33,7 @@ class Message {
 class MessageKey {
   String key;
   MessageType type;
-  SubType subType;
+  SubType? subType;
 
   MessageKey(this.key, this.type, this.subType);
 
@@ -45,17 +45,7 @@ class MessageKey {
 
 enum MessageType { message, plural, gender }
 
-enum SubType {
-  pluralZero,
-  pluralOne,
-  pluralTwo,
-  pluralFew,
-  pluralMany,
-  pluralOther,
-  genderMale,
-  genderFemale,
-  genderOther
-}
+enum SubType { pluralZero, pluralOne, pluralTwo, pluralFew, pluralMany, pluralOther, genderMale, genderFemale, genderOther }
 
 RegExp _FILE_NAMING_REGEXP = RegExp(r'string_\w+.json');
 
@@ -73,8 +63,7 @@ Map<String, FileSystemEntity> getValidStringFileMap(files) {
 //      printInfo('Basename : ${path.basename(file.path)}');
 //      printInfo('locale : ${locale}');
     } else {
-      printWarning(
-          '$fileName does not match naming pattern [string_{locale}.json]');
+      printWarning('$fileName does not match naming pattern [string_{locale}.json]');
     }
   }
 
@@ -91,9 +80,8 @@ Future<List<FileSystemEntity>> dirContents(Directory dir) {
   return completer.future;
 }
 
-FileSystemEntity getDefaultTemplateLang(
-    Map<String, FileSystemEntity> validFilesMap, String lang) {
-  FileSystemEntity defaultFile = validFilesMap[lang];
+FileSystemEntity? getDefaultTemplateLang(Map<String, FileSystemEntity> validFilesMap, String lang) {
+  FileSystemEntity? defaultFile = validFilesMap[lang];
   if (defaultFile != null) {
     return defaultFile;
   }
@@ -107,97 +95,97 @@ FileSystemEntity getDefaultTemplateLang(
 
 Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
   String json = await jsonFile.readAsString();
-  String normalizedJson = normalizedSpecialCharacters(json);
-
-  Map<String, dynamic> jsonMap = jsonDecode(normalizedJson);
-
+  String? normalizedJson = normalizedSpecialCharacters(json);
   Map<String, Message> keyMap = {};
+  if (normalizedJson != null) {
+    Map<String, dynamic> jsonMap = jsonDecode(normalizedJson);
 
-  for (MapEntry<String, dynamic> jsonEntry in jsonMap.entries) {
-    String k = jsonEntry.key;
-    String v = jsonEntry.value;
+    for (MapEntry<String, dynamic> jsonEntry in jsonMap.entries) {
+      String k = jsonEntry.key;
+      String v = jsonEntry.value;
 
-    MessageKey _messageKey = getMessageKey(k);
-    Message _message;
-    if (keyMap.containsKey(_messageKey.key)) {
-      _message = keyMap[_messageKey.key];
-    } else {
-      _message = Message();
-      _message.messageKey = _messageKey;
-      keyMap[_messageKey.key] = _message;
-    }
+      MessageKey _messageKey = getMessageKey(k);
+      Message _message;
+      if (keyMap.containsKey(_messageKey.key)) {
+        _message = keyMap[_messageKey.key]!;
+      } else {
+        _message = Message();
+        _message.messageKey = _messageKey;
+        keyMap[_messageKey.key] = _message;
+      }
 
-    switch (_messageKey.type) {
-      case MessageType.plural:
-        {
-          switch (_messageKey.subType) {
-            case SubType.pluralOne:
-              {
-                _message.one = v;
-                break;
-              }
-            case SubType.pluralFew:
-              {
-                _message.few = v;
-                break;
-              }
-            case SubType.pluralMany:
-              {
-                _message.many = v;
-                break;
-              }
-            case SubType.pluralOther:
-              {
-                _message.other = v;
-                break;
-              }
-            case SubType.pluralZero:
-              {
-                _message.zero = v;
-                break;
-              }
-            case SubType.pluralTwo:
-              {
-                _message.two = v;
-                break;
-              }
-            default:
-              {
-                break;
-              }
+      switch (_messageKey.type) {
+        case MessageType.plural:
+          {
+            switch (_messageKey.subType) {
+              case SubType.pluralOne:
+                {
+                  _message.one = v;
+                  break;
+                }
+              case SubType.pluralFew:
+                {
+                  _message.few = v;
+                  break;
+                }
+              case SubType.pluralMany:
+                {
+                  _message.many = v;
+                  break;
+                }
+              case SubType.pluralOther:
+                {
+                  _message.other = v;
+                  break;
+                }
+              case SubType.pluralZero:
+                {
+                  _message.zero = v;
+                  break;
+                }
+              case SubType.pluralTwo:
+                {
+                  _message.two = v;
+                  break;
+                }
+              default:
+                {
+                  break;
+                }
+            }
+            break;
           }
-          break;
-        }
-      case MessageType.gender:
-        {
-          switch (_messageKey.subType) {
-            case SubType.genderMale:
-              {
-                _message.male = v;
-                break;
-              }
-            case SubType.genderFemale:
-              {
-                _message.female = v;
-                break;
-              }
-            case SubType.genderOther:
-              {
-                _message.genderOther = v;
-                break;
-              }
-            default:
-              {
-                break;
-              }
+        case MessageType.gender:
+          {
+            switch (_messageKey.subType) {
+              case SubType.genderMale:
+                {
+                  _message.male = v;
+                  break;
+                }
+              case SubType.genderFemale:
+                {
+                  _message.female = v;
+                  break;
+                }
+              case SubType.genderOther:
+                {
+                  _message.genderOther = v;
+                  break;
+                }
+              default:
+                {
+                  break;
+                }
+            }
+            break;
           }
-          break;
-        }
-      default:
-        {
-          _message.message = v;
-          break;
-        }
+        default:
+          {
+            _message.message = v;
+            break;
+          }
+      }
     }
   }
 
@@ -207,7 +195,7 @@ Future<Map<String, Message>> generateJsonKeyMessageMap(File jsonFile) async {
 MessageKey getMessageKey(String jsonKey) {
   String key;
   MessageType type;
-  SubType subType;
+  SubType? subType;
 
   if (jsonKey.endsWith('One')) {
     key = jsonKey.substring(0, jsonKey.lastIndexOf('One'));
