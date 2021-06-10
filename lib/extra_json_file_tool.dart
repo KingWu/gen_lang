@@ -12,17 +12,17 @@ class Message {
   late String message;
 
   // Plural
-  late String zero;
-  late String one;
-  late String two;
-  late String few;
-  late String many;
-  late String other;
+  String zero = '';
+  String one = '';
+  String two = '';
+  String few = '';
+  String many = '';
+  String other = '';
 
   // Gender
-  late String male;
-  late String female;
-  late String genderOther;
+  String male = '';
+  String female = '';
+  String genderOther = '';
 
   @override
   String toString() {
