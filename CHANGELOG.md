@@ -1,3 +1,10 @@
+## 0.1.4
+Fix
+----
+* Update 'args' to 2.3.0
+* Update 'path' to 1.8.0
+* Update 'ansicolor' to 2.0.1
+
 ## 0.1.3
 Fix
 ----
