@@ -10,5 +10,5 @@ environment:
 
 dependencies:
   args: ^2.3.0
-  path: ^1.8.0
+  path: ^1.8.1
   ansicolor: ^2.0.1
