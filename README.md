@@ -150,3 +150,8 @@ pub run gen_lang:generate
 ```
 
 Then will generate `i18n.dart` and `messages_all.dart`
+
+
+# Powered By 
+- [Plaker Lab 創玩坊](https://plakerlab.com/)
+- [Wenjetso 搵著數](https://www.wenjetso.com/zh_HK/)
